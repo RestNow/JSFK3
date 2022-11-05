@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<script>
+		// выбрали слово
+		function pickWord(word) {
+			return words[Math.floor(Math.random() * words.length)]
+		}
+		// стартовый массив - слово
+		function setupAnswerArray(word) {
+			var answerArray = [];
+			for (i = 0; i < word.length; i++) {
+				answerArray[i] = "_";
+			}
+			return (answerArray);
+		}
+		// Текущее состояние игры
+		var showPlayerProgress = function (answerArray) {
+			alert(answerArray.join(" "));
+		};
+		// Запрос ответа у игрока
+		function getGuess() {
+			return prompt("Назовите букву")
+		}
+		// показываем прогресс игрока
+		function showPlayerProgress(answerArray) {
+			alert(answerArray)
+		}
+		// Обновляем статус игры и возвращаем кол-во открытых букв
+		var updateGameState = function (guess, word, answerArray) {
+			// Обновляет answerArray согласно ответу игрока (guess)
+			// возвращает число, обозначающее, сколько раз буква guess
+			// встречается в слове, чтобы можно было обновить значение
+			// remainingLetters
+			var appearances = 0;
+			for (var j = 0; j < word.length; j++) {
+				if (word[j] === guess && answerArray[j] === "_") {
+					answerArray[j] = guess;
+					appearances++;
+				}
+			}
+
+			return appearances;
+		};
+
+		// Показать поздравления и показать ответ 
+		var showAnswerAndCongratulatePlayer = function (answerArray) {
+			showPlayerProgress(answerArray);
+			alert("Отлично! Было загадано слово " + answerArray.join(""));
+		}
+
+
+
+		var words = ["слюни", "вышка", "собака", "карась", "солнце"];
+		var word = pickWord(words);
+		var answerArray = setupAnswerArray(word);
+		var remainingLetters = word.length;
+		while (remainingLetters > 0) {
+			showPlayerProgress(answerArray);
+			var guess = getGuess();
+			if (guess === null) {
+				break;
+			} else if (guess.length !== 1) {
+				alert("Введите одну букву")
+			} else {
+				var correctGuesses = updateGameState(guess, word,
+					answerArray);
+				remainingLetters -= correctGuesses;
+			}
+		}
+		showAnswerAndCongratulatePlayer(answerArray);
+	</script>
+</body>
+
+</html>

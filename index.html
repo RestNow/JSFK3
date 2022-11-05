@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<h1>Hi</h1>
+	<script>
+		// Приветсвие 		
+		var sayHellowTo = function (name) {
+			console.log("Здарова, " + name + " !")
+		};
+		// Рисовать котов
+		var drawCats = function (howMany) {
+			for (i = 0; i < howMany; i++) {
+				console.log(i + " =^.^=");
+			}
+		};
+		// Удвоить 
+		var double = function (number) {
+			return number * 2;
+		};
+		// Дразнилка через функцию
+		var pickRandomWord = function (words) {
+			return words[Math.floor(Math.random() * words.length)];
+		};
+		var generateRandomInsult = function () {
+			var randomBodyParts = ["глаз", "нос", "череп"];
+			var randomAdjectives = ["вонючая", "унылая", "дурацкая"];
+			var randomWords = ["муха", "выдра", "дубина", "мартышка", "крыса"];
+			// Соединяем случайные строки в предложение:
+			var randomString = "У тебя " + pickRandomWord(randomBodyParts) +
+				" словно " + pickRandomWord(randomAdjectives) +
+				" " + pickRandomWord(randomWords) + "!!!";
+			return randomString;
+		};
+		// return как прерывание функции
+		var letter = function (name) {
+			if (name.length < 5) {
+				return;
+			}
+			return ("Четвертая буква вашего имени - " + name[3] + " .")
+
+		}
+		// Выдача медалей за очки 
+		var medalForScore = function (score) {
+			if (score < 3) {
+				return ("У вас бронза")
+			} if (score < 6) {
+				return ("У вас серебро")
+			}
+			return ("У вас золото")
+		}
+		// фунции сложить и умножить
+		function add(a, b) {
+			return (a + b)
+		};
+		function multi(c, d) {
+			return (c * d)
+		}
+		console.log(add(multi(3635, 9824), 777))
+		// сравнение массивов
+		function areArraysSame(firstArr, secondArr) {
+			for (i = 0; i < firstArr.length; i++) {
+				if (firstArr.length !== secondArr.length) {
+					return (false)
+				}
+				if (firstArr[i] !== secondArr[i]) {
+					return ("False")
+				}
+			}
+			return ("True")
+		}
+	</script>
+</body>
+
+</html>
